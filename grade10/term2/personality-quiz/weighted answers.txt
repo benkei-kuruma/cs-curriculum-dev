@@ -1,0 +1,89 @@
+*********************Toppings*********************
+
+Pepperoni
+---------
+leo += 1;
+don += 2;
+raph += 3;
+mike += 4;
+
+Mushroom
+---------
+leo += 4;
+don += 1;
+raph += 2; 
+mike += 3;
+
+Green Peppers
+------------
+leo += 3;
+don += 4;
+raph += 1;
+mike += 2;
+
+Pineapple
+------------
+leo += 2;
+don += 3;
+raph += 4;
+mike += 1;
+
+*********************Weapons*********************
+
+Katana 
+------
+leo += 4;
+don += 3;
+raph += 2;
+mike += 1;
+
+Bo-Staff
+--------
+leo += 1;
+don += 4;
+raph += 3;
+mike += 2;
+
+Sai Daggers
+-----------
+leo += 2;
+don += 1;
+raph += 4;
+mike += 3;
+
+Nunchucks
+---------
+leo += 3;
+don += 2;
+raph += 1;
+mike += 4;
+
+*********************Colors*********************
+
+Orange
+-------
+leo += 1;
+don += 2;
+raph += 3;
+mike += 4;
+
+Red
+---
+leo += 2;
+don += 3;
+raph += 4;
+mike += 1;
+
+Purple
+--------
+leo += 3;
+don += 4;
+raph += 1;
+mike += 2;
+
+Blue
+----
+leo += 4;
+don += 1;
+raph += 2;
+mike += 3;

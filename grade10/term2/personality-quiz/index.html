@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Quiz</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1 id="page-title">Which Teenage Mutant Ninjin Turtle Are You?</h1>
+    </header>
+    <main>
+      <button id="play-again">Play again!</button>
+      <form id="quiz" name="quiz" action="" method="GET" onsubmit="return false;">
+        <div id="q-1" class="question">
+          <h2>What is your favorite pizza topping?</h2>
+          <div class="choices">
+            <input type="radio" name="toppings" id="pepperoni" class="choice-radio">
+            <label for="pepperoni" class="choice choice-1">Pepperoni</label>
+            <input type="radio" name="toppings" id="mushrooms" class="choice-radio">              
+            <label for="mushrooms" class="choice choice-2">Mushrooms</label>
+            <input type="radio" name="toppings" id="green-peppers" class="choice-radio">
+            <label for="green-peppers" class="choice choice-3">Green Peppers</label>
+            <input type="radio" name="toppings" id="pineapple" class="choice-radio">
+            <label for="pineapple" class="choice choice-4">Pineapple</label>
+          </div>
+        </div>
+        <div id="q-2" class="question">
+          <h2>What is your favorite ninjin weapon?</h2>
+          <div class="choices">
+            <input type="radio" name="weapons" id="katana" class="choice-radio">
+            <label for="katana" class="choice choice-1">Katana</label>
+            <input type="radio" name="weapons" id="bo-staff" class="choice-radio">              
+            <label for="bo-staff" class="choice choice-2">Bo Staff</label>
+            <input type="radio" name="weapons" id="sai-daggers" class="choice-radio">
+            <label for="sai-daggers" class="choice choice-3">Sai Daggers</label>
+            <input type="radio" name="weapons" id="nunchucks" class="choice-radio">
+            <label for="nunchucks" class="choice choice-4">Nunchucks</label>
+          </div>
+        </div>
+        <div id="q-3" class="question">
+          <h2>What is your favorite ninjin color?</h2>
+          <div class="choices">              
+            <input type="radio" name="colors" id="orange" class="choice-radio">
+            <label for="orange" class="choice choice-4">Orange</label>
+            <input type="radio" name="colors" id="red" class="choice-radio">
+            <label for="red" class="choice choice-3">Red</label>
+            <input type="radio" name="colors" id="purple" class="choice-radio">              
+            <label for="purple" class="choice choice-2">Purple</label>
+            <input type="radio" name="colors" id="blue" class="choice-radio">
+            <label for="blue" class="choice choice-1">Blue</label>
+          </div>
+        </div>
+        <input type="button" id="form-submit" value="Submit">
+      </form>
+      <div id="result"></div>
+    </main>  
+    <script src="script.js"></script>
+  </body>
+</html>
