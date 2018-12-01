@@ -133,7 +133,7 @@ function resetVariables() {
   alienDiameter = 40;
   alienX = alienDiameter / 2;
   alienY = alienDiameter / 2;
-  alienVelocity = 10;
+  alienVelocity = 1;
   alienBulletDiameter = 15;
   shipShooting = false;
   alienShooting = false;
