@@ -1,53 +1,53 @@
 // UI Variables
-var gameScreen;
-var musicButton;
-var score;
+let gameScreen;
+let musicButton;
+let score;
 
 // Platform Variables
-var platforms; // p5.play sprite group
-var platformImageFirst, platformImageMiddle, platformImageLast;
+let platforms; // p5.play sprite group
+let platformImageFirst, platformImageMiddle, platformImageLast;
 
 // Player Variables
-var player; //p5.play sprite
-var sword; 
-var playerIdleAnimation, playerRunAnimation, playerJumpAnimation, playerFallAnimation, playerAttackAnimation;
-var playerGrounded; // boolean
-var playerAttacking; // boolean
-var playerStartX, playerStartY;
+let player; //p5.play sprite
+let sword;
+let playerIdleAnimation, playerRunAnimation, playerJumpAnimation, playerFallAnimation, playerAttackAnimation;
+let playerGrounded; // boolean
+let playerAttacking; // boolean
+let playerStartX, playerStartY;
 
 // Monster Variables
-var monsters; // p5.play sprite group
-var monsterWalkAnimation;
-var monsterDefeatImage;
+let monsters; // p5.play sprite group
+let monsterWalkAnimation;
+let monsterDefeatImage;
 
 // Other Game Object Variables
-var collectables;
-var collectableImage;
-var goal;
-var goalImage;
+let collectables;
+let collectableImage;
+let goal;
+let goalImage;
 
 // Physics Variables
 const GRAVITY = 0.5;
 const DEFAULT_VELOCITY = 5;
 const DEFAULT_JUMP_FORCE = -5;
-var currentJumpForce;
+let currentJumpForce;
 
 // Timing and Control Variables
 const MAX_JUMP_TIME = 2000; //milliseconds
-var currentJumpTime;
-var millis, deltaMillis;
-var gamePaused;
+let currentJumpTime;
+let millis, deltaMillis;
+let gamePaused;
 
 // Sound, music, etc.
-var hitSound, yahSound, ayeSound, jumpSound, winSound, yattaSound, loseSound, collectableSound, pauseSound;
-var bgMusic;
+let hitSound, yahSound, ayeSound, jumpSound, winSound, yattaSound, loseSound, collectableSound, pauseSound;
+let bgMusic;
 
 // This allows the player to press any of the arrow keys (as well as spacebar, just
 // in case you wanted to program that eventually) without interfering with the
 // browser window.
 window.addEventListener("keydown", function(e) {
-  var key = e.which || e.keyCode;
-  var gameKeys = [32, 37, 38, 39, 40];
+  let key = e.which || e.keyCode;
+  let gameKeys = [32, 37, 38, 39, 40];
   if(gameKeys.indexOf(key) >= 0) {
       e.preventDefault();
   }
@@ -180,8 +180,8 @@ function createSword() {
 // Creates a platform of specified length (len) at x, y.
 // Value of len must be >= 2
 function createPlatform(x, y, len) {
-  var first = createSprite(x, y, 0, 0);
-  var last = createSprite(x + ((len - 1) * 128), y, 0, 0);
+  let first = createSprite(x, y, 0, 0);
+  let last = createSprite(x + ((len - 1) * 128), y, 0, 0);
   first.addToGroup(platforms);
   last.addToGroup(platforms);
   first.addImage(platformImageFirst);
@@ -189,8 +189,8 @@ function createPlatform(x, y, len) {
   //first.debug = true;
   //last.debug = true;
   if(len > 2) {
-    for(var i = 1; i < len - 1; i++) {
-      var middle = createSprite(x + (128 * i), y, 0, 0);
+    for(let i = 1; i < len - 1; i++) {
+      let middle = createSprite(x + (128 * i), y, 0, 0);
       middle.addToGroup(platforms);
       middle.addImage(platformImageMiddle);
       //middle.debug = true;
@@ -201,7 +201,7 @@ function createPlatform(x, y, len) {
 // Creates a monster sprite and adds animations and a collider to it.
 // Also sets the monster's initial velocity.
 function createMonster(x, y, velocity) {
-  var monster = createSprite(x, y, 0, 0);
+  let monster = createSprite(x, y, 0, 0);
   monster.addToGroup(monsters);
   monster.addAnimation("walk", monsterWalkAnimation).loop = true;
   monster.changeAnimation("walk");
@@ -219,7 +219,7 @@ function createMonster(x, y, velocity) {
 
 // Creates a collectable sprite and adds an image to it.
 function createCollectable(x, y) {
-  var collectable = createSprite(x, y, 0, 0);
+  let collectable = createSprite(x, y, 0, 0);
   collectable.addToGroup(collectables);
   collectable.scale = 0.5;
   collectable.addImage(collectableImage);
@@ -238,7 +238,7 @@ function applyGravity() {
   if(player.position.y >= height) {
     executeLoss();
   }
-  for(var i = 0; i < monsters.length; i++) {
+  for(let i = 0; i < monsters.length; i++) {
     monsters[i].velocity.y += GRAVITY;
     if(monsters[i].position.y >= height) {
         monsters[i].remove();
@@ -267,7 +267,7 @@ function platformCollision(sprite, platform) {
     currentJumpForce = DEFAULT_JUMP_FORCE;
     playerGrounded = true;
   }
-  for(var i = 0; i < monsters.length; i++) {
+  for(let i = 0; i < monsters.length; i++) {
     if(sprite === monsters[i] && sprite.touching.bottom) {
       sprite.velocity.y = 0;
     }
@@ -280,7 +280,7 @@ function playerMonsterCollision(player, monster) {
     yahSound.play();
     hitSound.play();
     monster.remove();
-    var defeatedMonster = createSprite(monster.position.x, monster.position.y, 0, 0);
+    let defeatedMonster = createSprite(monster.position.x, monster.position.y, 0, 0);
     defeatedMonster.addImage(monsterDefeatImage);
     defeatedMonster.mirrorX(monster.mirrorX());
     defeatedMonster.scale = 0.25;
@@ -298,7 +298,7 @@ function playerMonsterCollision(player, monster) {
 
 function swordMonsterCollision(sword, monster) {
     monster.remove();
-    var defeatedMonster = createSprite(monster.position.x, monster.position.y, 0, 0);
+    let defeatedMonster = createSprite(monster.position.x, monster.position.y, 0, 0);
     defeatedMonster.addImage(monsterDefeatImage);
     defeatedMonster.mirrorX(monster.mirrorX());
     defeatedMonster.scale = 0.25;
@@ -330,7 +330,7 @@ function updatePlayer() {
 function checkIdle() {
   if(!keyIsDown(LEFT_ARROW) && !keyIsDown(RIGHT_ARROW) && playerGrounded) {
     if(!playerAttacking) {
-			player.changeAnimation("idle");		
+			player.changeAnimation("idle");
 		}
     player.velocity.x = 0;
   }
@@ -467,7 +467,7 @@ function updateDisplay() {
   camera.position.x = player.position.x;
 
   // animate collectables by rotating them clockwise
-  for(var i = 0; i < collectables.length; i++) {
+  for(let i = 0; i < collectables.length; i++) {
     collectables[i].rotation += 5;
   }
 }
